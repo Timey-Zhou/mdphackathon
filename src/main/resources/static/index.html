@@ -19,21 +19,21 @@
       <input type="submit" value="search" ng-click="submit(cpt, insurance)">
     </form>
     <br>
-    <table class="table">
+    <table class="table table-striped table-bordered">
       <tr>
         <th width="300"></th>
         <th width="300">athenaNet</th>
         <th width="300">{{result.insurance}}</th>
       </tr>
       <tr>
-        <td align="center">Claims Billed</td>
-        <td align="center">{{result.universalCount}}</td>
-        <td align="center">{{result.insuranceCount}}</td>
+        <td>Claims Billed</td>
+        <td>{{result.universalCount}}</td>
+        <td>{{result.insuranceCount}}</td>
       </tr>
       <tr>
-        <td align="center">Rate</td>
-        <td align="center">{{result.universalRate}}</td>
-        <td align="center">{{result.insuranceRate}}</td>
+        <td>Rate</td>
+        <td>{{result.universalRate}}</td>
+        <td>{{result.insuranceRate}}</td>
       </tr>
     </table>
   </div>
