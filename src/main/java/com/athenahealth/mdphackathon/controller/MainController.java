@@ -1,5 +1,6 @@
 package com.athenahealth.mdphackathon.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import com.athenahealth.mdphackathon.entity.Bestimate;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/")
 public class MainController {
 
-    @RequestMapping(value = "/request", method = RequestMethod.GET)
+    @RequestMapping(value = "/singleRequest", method = RequestMethod.GET)
     @ResponseBody
-    public String request(@RequestParam("cpt") String cpt, @RequestParam("insurance") String insurance) {
+    public String singleRequest(@RequestParam("cpt") String cpt, @RequestParam("insurance") String insurance) {
         JSONObject json = new JSONObject();
 
         Bestimate result = Bestimator.getBestimate(cpt, insurance);
@@ -34,5 +35,18 @@ public class MainController {
         json.put("universalRate", "50%");
         json.put("insuranceRate", "10%");
         return json.toJSONString();
+    }
+
+    @RequestMapping(value = "/batchRequest", method = RequestMethod.GET)
+    @ResponseBody
+    public String batchRequest(@RequestParam("cpt") String cpt) {
+        JSONObject json = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        Bestimate result1 = Bestimator.getBestimate("99202", "*SELF PAY*");
+        Bestimate result2 = Bestimator.getBestimate("99202", "QUAL CHOICE OF ARKANSAS (HMO)");
+        array.add(result1);
+        array.add(result2);
+        return array.toJSONString();
     }
 }
