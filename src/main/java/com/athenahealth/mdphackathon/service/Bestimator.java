@@ -152,8 +152,17 @@ public class Bestimator {
         }
     }
 
-    public static Map<String, Map<String, Integer>> getStateMap() {
-      return mapStateToCptToCount;
+    public static List<StateCount> getStateMap(String cpt) {
+        List<StateCount> results = new ArrayList<>();
+      for (String name : mapStateToCptToCount.keySet()) {
+          Map<String, Integer> map = mapStateToCptToCount.get(name);
+          if (map.containsKey(cpt)) {
+              results.add(new StateCount(name, map.get(cpt)));
+          } else {
+              results.add(new StateCount(name, -1));
+          }
+      };
+      return results;
     }
 
     public static Bestimate getBestimate(String cpt, String insurance) {

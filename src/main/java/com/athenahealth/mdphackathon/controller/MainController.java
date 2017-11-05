@@ -2,8 +2,10 @@ package com.athenahealth.mdphackathon.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import java.util.*;
 
 import com.athenahealth.mdphackathon.entity.Bestimate;
+import com.athenahealth.mdphackathon.entity.StateCount;
 import com.athenahealth.mdphackathon.service.Bestimator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,15 +36,6 @@ public class MainController {
         }
         json.put("universalRate", "50%");
         json.put("insuranceRate", "10%");
-        return json.toJSONString();
-    }
-
-    @RequestMapping(value = "/batchRequest", method = RequestMethod.GET)
-    @ResponseBody
-    public String batchRequest(@RequestParam("cpt") String cpt) {
-        JSONObject json = new JSONObject();
-        json.putAll(Bestimator.getStateMap());
-
         return json.toJSONString();
     }
 
