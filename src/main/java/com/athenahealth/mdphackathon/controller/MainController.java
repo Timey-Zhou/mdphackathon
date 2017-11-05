@@ -41,12 +41,17 @@ public class MainController {
     @ResponseBody
     public String batchRequest(@RequestParam("cpt") String cpt) {
         JSONObject json = new JSONObject();
-        JSONArray array = new JSONArray();
+        json.putAll(Bestimator.getStateMap());
 
-        Bestimate result1 = Bestimator.getBestimate("99202", "*SELF PAY*");
-        Bestimate result2 = Bestimator.getBestimate("99202", "QUAL CHOICE OF ARKANSAS (HMO)");
-        array.add(result1);
-        array.add(result2);
-        return array.toJSONString();
+        return json.toJSONString();
+    }
+
+    @RequestMapping(value = "/byPayer", method = RequestMethod.GET)
+    @ResponseBody
+    public String byPayer(@RequestParam("cpt") String cpt) {
+        JSONObject json = new JSONObject();
+        json.putAll(Bestimator.getMapInsuranceToCptToCount());
+
+        return json.toJSONString();
     }
 }

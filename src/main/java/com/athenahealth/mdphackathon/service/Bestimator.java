@@ -112,6 +112,10 @@ public class Bestimator {
 
     private static ObjectMapper mapper = new ObjectMapper();
 
+    public static Map<String, Map<String, Integer>> getMapInsuranceToCptToCount() {
+        return mapInsuranceToCptToCount;
+    }
+
     private static Map<String, Map<String, Integer>> mapInsuranceToCptToCount;
     private static Map<String, Integer> cptToTotalClaimCountMap = new HashMap<>();
 
