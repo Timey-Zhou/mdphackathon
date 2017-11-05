@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="demo">
 <head>
-  <title>Test Test Test</title>
+  <title>nourish.health</title>
   <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
         integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
@@ -20,27 +20,28 @@
   <div class="row">
     <div class="col">
       <div ng-controller="singleRequest">
+        <h3>nourish.health Widget</h3>
         <form novalidate class="simple-form">
           <label> CPT <input type="text" ng-model="cpt"> </label>
           <label> Insurance <input type="text" ng-model="insurance"> </label>
           <input type="submit" value="search" ng-click="submit(cpt, insurance)">
         </form>
         <br>
-        <table class="table">
+        <table class="table table-striped table-bordered">
           <tr>
-            <th class="text-center" width="300"></th>
-            <th class="text-center" width="300">athenaNet</th>
-            <th class="text-center" width="300">{{result.insurance}}</th>
+            <th></th>
+            <th>athenaNet</th>
+            <th>{{result.insurance}}</th>
           </tr>
           <tr>
-            <td align="center">Claims Billed</td>
-            <td align="center">{{result.universalCount}}</td>
-            <td align="center">{{result.insuranceCount}}</td>
+            <td>Claims Billed</td>
+            <td>{{result.universalCount}}</td>
+            <td>{{result.insuranceCount}}</td>
           </tr>
           <tr>
-            <td align="center">Rate</td>
-            <td align="center">{{result.universalRate}}</td>
-            <td align="center">{{result.insuranceRate}}</td>
+            <td>Reimbursement Rate</td>
+            <td>{{result.universalRate}}</td>
+            <td>{{result.insuranceRate}}</td>
           </tr>
         </table>
       </div>
@@ -48,32 +49,32 @@
     <div class="col">
     </div>
   </div>
-  <br>
+  <!--<br>-->
+  <!--<div class="row">-->
+    <!--<div class="col">-->
+      <!--<h5>Results:</h5>-->
+      <!--<div id="clicked-state"></div>-->
+      <!--<div id="map" style="width: 400px; height: 300px;"></div>-->
+    <!--</div>-->
+  <!--</div>-->
   <div class="row">
     <div class="col">
-      <h5>Results:</h5>
-      <div id="clicked-state"></div>
-      <div id="map" style="width: 400px; height: 300px;"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div ng-controller="batchRequest">
+      <br>
+      <h3>Claims Billed by Payer</h3>
+      <div ng-controller="byPayer">
         <form novalidate class="simple-form">
           <label> CPT <input type="text" ng-model="cpt"> </label>
           <input type="submit" value="search" ng-click="submit(cpt)">
         </form>
         <br>
-        <table class="table">
+        <table class="table table-striped table-bordered">
           <tr>
-            <th class="text-center" width="300">Insurance</th>
-            <th class="text-center" width="300">State</th>
-            <th class="text-center" width="300">Billed Claims</th>
+            <th>Insurance</th>
+            <th>Billed Claims</th>
           </tr>
           <tr ng-repeat = "r in results">
-            <td align="center">{{r.insurance}}</td>
-            <td align="center">MA</td>
-            <td align="center">{{r.thisInsuranceClaimCount}}</td>
+            <td>{{r.insurance}}</td>
+            <td>{{r.thisInsuranceClaimCount}}</td>
           </tr>
         </table>
       </div>
