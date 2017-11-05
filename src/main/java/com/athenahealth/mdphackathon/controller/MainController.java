@@ -2,8 +2,10 @@ package com.athenahealth.mdphackathon.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import java.util.*;
 
 import com.athenahealth.mdphackathon.entity.Bestimate;
+import com.athenahealth.mdphackathon.entity.StateCount;
 import com.athenahealth.mdphackathon.service.Bestimator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,13 +42,13 @@ public class MainController {
     @RequestMapping(value = "/batchRequest", method = RequestMethod.GET)
     @ResponseBody
     public String batchRequest(@RequestParam("cpt") String cpt) {
-        JSONObject json = new JSONObject();
         JSONArray array = new JSONArray();
-
-        Bestimate result1 = Bestimator.getBestimate("99202", "*SELF PAY*");
-        Bestimate result2 = Bestimator.getBestimate("99202", "QUAL CHOICE OF ARKANSAS (HMO)");
-        array.add(result1);
-        array.add(result2);
+        List<StateCount> results = Bestimator.getStateMap(cpt);
+        for (StateCount sc : results) {
+            if (sc.getCount() != -1) {
+                array.add(sc);
+            }
+        }
         return array.toJSONString();
     }
 }

@@ -66,17 +66,17 @@
         <br>
         <table class="table">
           <tr>
-            <th class="text-center" width="300">Insurance</th>
             <th class="text-center" width="300">State</th>
             <th class="text-center" width="300">Billed Claims</th>
           </tr>
           <tr ng-repeat = "r in results">
-            <td align="center">{{r.insurance}}</td>
-            <td align="center">MA</td>
-            <td align="center">{{r.thisInsuranceClaimCount}}</td>
+            <td align="center">{{r.name}}</td>
+            <td align="center">{{r.count}}</td>
           </tr>
         </table>
       </div>
+    </div>
+    <div class="col">
     </div>
   </div>
 </div>
