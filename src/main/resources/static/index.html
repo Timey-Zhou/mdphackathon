@@ -1,41 +1,42 @@
 <!doctype html>
 <html ng-app="demo">
 <head>
-    <title>Test Test Test</title>
-    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
-    <script src = "/js/index.js"></script>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-    </style>
+  <title>Test Test Test</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+  <script src="/js/index.js"></script>
 </head>
 
 <body>
-<div ng-controller = "request">
-    <form novalidate class = "simple-form">
-        <label> CPT <input type = "text" ng-model="cpt"> </label>
-        <label> Insurance <input type = "text" ng-model="insurance"> </label>
-        <input type = "submit" value = "search" ng-click = "submit(cpt, insurance)">
+<div class="container">
+  <div ng-controller="request">
+    <form novalidate class="simple-form">
+      <label> CPT <input type="text" ng-model="cpt"> </label>
+      <label> Insurance <input type="text" ng-model="insurance"> </label>
+      <input type="submit" value="search" ng-click="submit(cpt, insurance)">
     </form>
     <br>
-    <table style="width:50%">
-        <tr>
-            <th width="300"></th>
-            <th width="300">athenaNet</th>
-            <th width="300">{{result.insurance}}</th>
-        </tr>
-        <tr>
-            <td align="center">Claims Billed</td>
-            <td align="center">{{result.universalCount}}</td>
-            <td align="center">{{result.insuranceCount}}</td>
-        </tr>
-        <tr>
-            <td align="center">Rate</td>
-            <td align="center">{{result.universalRate}}</td>
-            <td align="center">{{result.insuranceRate}}</td>
-        </tr>
+    <table class="table">
+      <tr>
+        <th width="300"></th>
+        <th width="300">athenaNet</th>
+        <th width="300">{{result.insurance}}</th>
+      </tr>
+      <tr>
+        <td align="center">Claims Billed</td>
+        <td align="center">{{result.universalCount}}</td>
+        <td align="center">{{result.insuranceCount}}</td>
+      </tr>
+      <tr>
+        <td align="center">Rate</td>
+        <td align="center">{{result.universalRate}}</td>
+        <td align="center">{{result.insuranceRate}}</td>
+      </tr>
     </table>
+  </div>
 </div>
 </body>
 
