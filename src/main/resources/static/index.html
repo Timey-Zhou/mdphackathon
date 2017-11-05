@@ -8,34 +8,76 @@
         crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
   <script src="/js/index.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/raphael.js"></script>
+  <script src="js/jquery.usmap.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/color.jquery.js"></script>
 </head>
 
 <body>
 <div class="container">
-  <div ng-controller="request">
-    <form novalidate class="simple-form">
-      <label> CPT <input type="text" ng-model="cpt"> </label>
-      <label> Insurance <input type="text" ng-model="insurance"> </label>
-      <input type="submit" value="search" ng-click="submit(cpt, insurance)">
-    </form>
-    <br>
-    <table class="table">
-      <tr>
-        <th width="300"></th>
-        <th width="300">athenaNet</th>
-        <th width="300">{{result.insurance}}</th>
-      </tr>
-      <tr>
-        <td align="center">Claims Billed</td>
-        <td align="center">{{result.universalCount}}</td>
-        <td align="center">{{result.insuranceCount}}</td>
-      </tr>
-      <tr>
-        <td align="center">Rate</td>
-        <td align="center">{{result.universalRate}}</td>
-        <td align="center">{{result.insuranceRate}}</td>
-      </tr>
-    </table>
+  <div class="row">
+    <div class="col">
+      <div ng-controller="singleRequest">
+        <form novalidate class="simple-form">
+          <label> CPT <input type="text" ng-model="cpt"> </label>
+          <label> Insurance <input type="text" ng-model="insurance"> </label>
+          <input type="submit" value="search" ng-click="submit(cpt, insurance)">
+        </form>
+        <br>
+        <table class="table">
+          <tr>
+            <th class="text-center" width="300"></th>
+            <th class="text-center" width="300">athenaNet</th>
+            <th class="text-center" width="300">{{result.insurance}}</th>
+          </tr>
+          <tr>
+            <td align="center">Claims Billed</td>
+            <td align="center">{{result.universalCount}}</td>
+            <td align="center">{{result.insuranceCount}}</td>
+          </tr>
+          <tr>
+            <td align="center">Rate</td>
+            <td align="center">{{result.universalRate}}</td>
+            <td align="center">{{result.insuranceRate}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <h5>Results:</h5>
+      <div id="clicked-state"></div>
+      <div id="map" style="width: 400px; height: 300px;"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div ng-controller="batchRequest">
+        <form novalidate class="simple-form">
+          <label> CPT <input type="text" ng-model="cpt"> </label>
+          <input type="submit" value="search" ng-click="submit(cpt)">
+        </form>
+        <br>
+        <table class="table">
+          <tr>
+            <th class="text-center" width="300">Insurance</th>
+            <th class="text-center" width="300">State</th>
+            <th class="text-center" width="300">Billed Claims</th>
+          </tr>
+          <tr ng-repeat = "r in results">
+            <td align="center">{{r.insurance}}</td>
+            <td align="center">MA</td>
+            <td align="center">{{r.thisInsuranceClaimCount}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 </body>

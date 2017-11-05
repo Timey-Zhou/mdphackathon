@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Bestimator {
 
-    private static String json = "{ \"*SELF PAY*\": { \"99201\": 1, \"99202\": 2, \"99213\": 51, \"99214\": 1, \"99490\": 2 },\n"
+    private static String json = "{ \"*SELF PAY*\": { \"99201\": 1, \"99202\": 2, \"8\": 51, \"99214\": 1, \"99490\": 2 },\n"
         + "  \"CHARGE CAPTURE INSURANCE PACKAGE (MOVED-TO-HOLD)\": { \"92960\": 4, \"93010\": 4, \"99359\": 1 },\n"
         + "  \"CIGNA HEALTHCARE (HMO)\": \n"
         + "   { \"10021\": 1,\n"
