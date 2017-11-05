@@ -39,16 +39,12 @@ public class MainController {
         return json.toJSONString();
     }
 
-    @RequestMapping(value = "/batchRequest", method = RequestMethod.GET)
+    @RequestMapping(value = "/byPayer", method = RequestMethod.GET)
     @ResponseBody
-    public String batchRequest(@RequestParam("cpt") String cpt) {
-        JSONArray array = new JSONArray();
-        List<StateCount> results = Bestimator.getStateMap(cpt);
-        for (StateCount sc : results) {
-            if (sc.getCount() != -1) {
-                array.add(sc);
-            }
-        }
-        return array.toJSONString();
+    public String byPayer(@RequestParam("cpt") String cpt) {
+        JSONObject json = new JSONObject();
+        json.putAll(Bestimator.getMapInsuranceToCptToCount());
+
+        return json.toJSONString();
     }
 }
